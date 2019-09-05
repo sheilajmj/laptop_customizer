@@ -13,7 +13,7 @@ class CustomOptions extends Component {
     super(props)
     const selected = {}
     Object.keys(this.props.features).map((feature, idx) => {
-    selected [feature] = this.props.features[feature][0].name
+    selected[feature] = this.props.features[feature][0].name
     });
 
     this.state ={
@@ -25,7 +25,7 @@ class CustomOptions extends Component {
     selected[feature] = newValue;
     console.log('setting state', selected[feature]);
     this.setState({
-      selected: feature
+      selected: selected
     });
     console.log('This is the new state:', this.state)
   }
@@ -37,7 +37,7 @@ class CustomOptions extends Component {
       
       const options = this.props.features[feature].map(item => {
       const itemHash = slugify(JSON.stringify(item));
-    // console.log (this.state.selected, feature);
+    // console.log ('this is the selected and then the feature:', this.state.selected, feature);
     // console.log ('this is item:', item)
         return (
           <div key={itemHash} className="feature__item">
@@ -46,7 +46,7 @@ class CustomOptions extends Component {
               id={itemHash}
               className="feature__option"
               name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
+              checked={item.name === this.state.selected[feature]}
               onChange={e => this.updateFeature(feature, item)}
             />
             <label htmlFor={itemHash} className="feature__label">
