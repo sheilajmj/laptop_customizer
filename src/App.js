@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
-
-
 import './App.css';
-
 import MainForm from './mainForm'
 import Cart from './cart'
 
@@ -16,7 +13,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 });
 
 class App extends Component {
-  state = {
+  constructor(props){
+    super(props);
+    this.state = {
     selected: {
       Processor: {
         name: '17th Generation Intel Core HB (7 Core with donut spare)',
@@ -35,6 +34,8 @@ class App extends Component {
         cost: 1500
       }
     }
+  }
+  this.updateFeature = this.updateFeature.bind(this);
   };
 
   updateFeature = (feature, newValue) => {
@@ -54,11 +55,12 @@ class App extends Component {
         </header>
         <main>
           <MainForm 
-            feature 
-            updateFeature
-            state = {this.state} />
+            features = {this.features} 
+            updateFeature = {this.updateFeature}
+            state = {this.state}
+            onChange = {e => this.updateFeature()} />
           <Cart 
-            feature
+            features = {this.props.features}
             state = {this.state} />
         </main>
       </div>

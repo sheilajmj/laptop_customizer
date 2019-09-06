@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Options from './options'
-import { ReactComponent } from "*.svg";
 
 
 
@@ -17,9 +16,9 @@ render() {
           <h3>{feature}</h3>
         </legend>
         <Options 
-        features 
-        updateFeature
-        state = {this.state} />
+        features = {this.features}
+        updateFeature = {this.props.updateFeature(this.props.feature, this.item)}
+        state = {this.props.state} />
       </fieldset>
     )
   });

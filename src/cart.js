@@ -29,7 +29,7 @@ export default class Cart extends Component {
                 <h2>Your cart</h2>
                 {summary}
                 <CartTotal 
-                state = {this.state}/>
+                state = {this.props.state}/>
             </section>
                     )
     };
