@@ -31,11 +31,12 @@ class App extends Component {
     this.updateFeature = this.updateFeature.bind(this);
   };  
 
-  updateFeature = async(feature, newValue) => {
+  updateFeature = (feature, newValue) => {
+    console.log ('this is state', this.state)
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
     console.log('about to set state to this:', selected[feature]);
-    await this.setState({
+    this.setState({
       selected: selected[feature]
       });
     console.log('This is the new state:', this.state) 

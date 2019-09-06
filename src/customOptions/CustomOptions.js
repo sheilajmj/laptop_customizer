@@ -17,6 +17,7 @@ class CustomOptions extends Component {
     Object.keys(this.props.features).map((feature, idx) => {
     selected[feature] = this.props.features[feature][0].name
     });
+    console.log("these are the props", props)
     this.state ={
     selected 
     }
@@ -39,7 +40,7 @@ class CustomOptions extends Component {
               className="feature__option"
               name={slugify(feature)}
               checked={item.name === this.state.selected[feature]}
-              onChange={e => this.props.updateFeature()}
+              onChange={e => this.props.updateFeature(item, newValue)}
             />
             <label htmlFor={itemHash} className="feature__label">
               {item.name} ({USCurrencyFormat.format(item.cost)})
