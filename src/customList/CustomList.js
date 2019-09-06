@@ -8,7 +8,9 @@ class CustomList extends Component {
           <div>
               <CustomOptions 
               features = {this.props.features}
-              state = {this.state} />
+              state = {this.state} 
+              updateFeature = {this.updateFeature}
+              onChange={e => this.updateFeature(feature, item)}/>
           </div>
       )   
 

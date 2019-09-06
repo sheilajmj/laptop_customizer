@@ -3,42 +3,34 @@ import React, { Component } from 'react';
 // in both URLs and html attributes
 import slugify from 'slugify';
 
+
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
   });
 
 class CustomOptions extends Component {
+  
   constructor(props) {
     super(props)
     const selected = {}
     Object.keys(this.props.features).map((feature, idx) => {
     selected[feature] = this.props.features[feature][0].name
     });
-
     this.state ={
-    selected: selected
+    selected 
     }
+    console.log('Here is the first state:', this.state)
 }
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    console.log('setting state', selected[feature]);
-    this.setState({
-      selected: selected
-    });
-    console.log('This is the new state:', this.state)
-  }
 
-
+  
+  
   render() {
     const features = Object.keys(this.props.features).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      
+      const featureHash = feature + '-' + idx;      
       const options = this.props.features[feature].map(item => {
-      const itemHash = slugify(JSON.stringify(item));
-    // console.log ('this is the selected and then the feature:', this.state.selected, feature);
-    // console.log ('this is item:', item)
+        const itemHash = slugify(JSON.stringify(item));
+
         return (
           <div key={itemHash} className="feature__item">
             <input

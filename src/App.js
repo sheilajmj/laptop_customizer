@@ -6,7 +6,9 @@ import './App.css';
 
 
 class App extends Component {
-  state = {
+  constructor(props){
+    super(props);
+    this.state = {
       selected: {
         Processor: {
           name: '17th Generation Intel Core HB (7 Core with donut spare)',
@@ -25,7 +27,19 @@ class App extends Component {
           cost: 1500
         }
       }
+    }
+    this.updateFeature = this.updateFeature.bind(this);
   };  
+
+  updateFeature = async(feature, newValue) => {
+    const selected = Object.assign({}, this.state.selected);
+    selected[feature] = newValue;
+    console.log('about to set state to this:', selected[feature]);
+    await this.setState({
+      selected: selected[feature]
+      });
+    console.log('This is the new state:', this.state) 
+  }
 
     render() {
       return (
@@ -38,7 +52,9 @@ class App extends Component {
               <h2>Customize your laptop</h2>
               <CustomList 
                 features = {this.props.features}
-                state = {this.state}/>
+                state = {this.state}
+                updateFeature = {this.updateFeature}
+                onChange={e => this.updateFeature(feature, item)} />
             </form>
             <section className="main__summary">
               <Cart 
@@ -50,5 +66,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

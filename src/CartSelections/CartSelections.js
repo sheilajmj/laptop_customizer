@@ -17,9 +17,11 @@ class CartSelections extends Component {
 
     
     render(){
+        console.log('cart Selection', this.props.state);
         const summary = Object.keys(this.props.state.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.state.selected[feature];
+            console.log ('in the cart:', selectedOption.name)
             return (
                 <div className="summary__option" key={featureHash}>
                     <div className="summary__option__label">{feature}</div>
