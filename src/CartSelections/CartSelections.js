@@ -18,9 +18,15 @@ class CartSelections extends Component {
     
     render(){
         console.log('cart Selection', this.props.state);
-        const summary = Object.keys(this.props.state.selected).map((feature, idx) => {
-            const featureHash = feature + '-' + idx;
+        const summary = Object.keys(this.props.state).map((feature, idx) => {
+            Object.keys(this.props.state.selected).map((feature) => {
+            console.log ('this is the feature in the map:', feature)
+                        const featureHash = feature + '-' + idx;
+
             const selectedOption = this.props.state.selected[feature];
+            console.log ('here is the state in my cart', state)
+            console.log ('this is selectedOption', selectedOption)
+            console.log ('this is this.props.state.selected', this.props.state.selected)
             console.log ('in the cart:', selectedOption.name)
             return (
                 <div className="summary__option" key={featureHash}>
@@ -31,7 +37,8 @@ class CartSelections extends Component {
                     </div>
                 </div>
             )
-        });
+        });            });
+
   
 
         return (

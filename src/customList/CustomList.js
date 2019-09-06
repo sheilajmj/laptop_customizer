@@ -6,11 +6,7 @@ class CustomList extends Component {
     render(){
       return (
           <div>
-              <CustomOptions 
-              features = {this.props.features}
-              state = {this.state} 
-              updateFeature = {this.updateFeature}
-              onChange={e => this.updateFeature()}/>
+             <CustomOptions  {...this.props} />
           </div>
       )   
 
