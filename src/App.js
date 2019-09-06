@@ -54,7 +54,7 @@ class App extends Component {
                 features = {this.props.features}
                 state = {this.state}
                 updateFeature = {this.updateFeature}
-                onChange={e => this.updateFeature(feature, item)} />
+                onChange={e => this.updateFeature()} />
             </form>
             <section className="main__summary">
               <Cart 

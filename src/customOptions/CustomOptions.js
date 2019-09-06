@@ -39,7 +39,7 @@ class CustomOptions extends Component {
               className="feature__option"
               name={slugify(feature)}
               checked={item.name === this.state.selected[feature]}
-              onChange={e => this.updateFeature(feature, item)}
+              onChange={e => this.props.updateFeature()}
             />
             <label htmlFor={itemHash} className="feature__label">
               {item.name} ({USCurrencyFormat.format(item.cost)})
